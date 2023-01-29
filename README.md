@@ -1,0 +1,1 @@
+This is a sample Java implementation of Hexagonal architecture for the blog post [Hexagonal architecture implementation](https://kovacstamasx.github.io/software/design/2023/01/08/hexagonal-architecture.html).
