@@ -3,8 +3,6 @@ package org.example.banking.domain.model.account;
 import org.example.banking.domain.model.base.Entity;
 import org.example.banking.domain.model.base.Id;
 
-import java.util.UUID;
-
 public class Client extends Entity<Client.ClientId> {
 
     private final ClientId id;
@@ -19,7 +17,7 @@ public class Client extends Entity<Client.ClientId> {
     }
 
     public static class ClientId extends Id {
-        public ClientId(UUID id) {
+        public ClientId(Long id) {
             super(id);
         }
     }
