@@ -4,7 +4,6 @@ import org.example.banking.domain.model.account.Account;
 import org.example.banking.domain.model.account.Account.WithdrawContext;
 import org.example.banking.domain.rule.Rule;
 
-
 public class AccountWithdrawOwnerRule implements Rule<WithdrawContext> {
 
     private final Account account;

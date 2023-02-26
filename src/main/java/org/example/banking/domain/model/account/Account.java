@@ -10,6 +10,8 @@ import org.example.banking.domain.rule.account.AccountWithdrawOwnerRule;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import static org.example.banking.domain.rule.RuleViolation.evaluate;
+
 public class Account extends AggregateRootEntity<Account.AccountId> {
 
     private final AccountId id;
@@ -41,12 +43,8 @@ public class Account extends AggregateRootEntity<Account.AccountId> {
     }
 
     public void withdraw(WithdrawContext context) {
-        var ruleViolation = evaluateRules(withdrawRules, context);
-        if (ruleViolation.isPresent()) {
-            throw new RuntimeException(ruleViolation.get());
-        }
-
-        balance = balance.subtract(context.amount);
+        evaluate(withdrawRules, context)
+                .runOrThrow(() -> balance = balance.subtract(context.amount));
     }
 
     public BigDecimal getBalance() {
